@@ -1,0 +1,82 @@
+body {
+  background-color: #f1f7f6;
+  background-image: url(../images/4k-wallpaper-architecture-background-1308624.jpg);
+  font-family: "Teko", sans-serif;
+}
+
+.jumbo-style {
+  color: #ffffff;
+  font-size: 30px;
+  background-color: black;
+  text-align: center;
+  border-bottom: 4px solid gold;
+}
+
+.jumbo-header {
+  font-size: 150px;
+}
+
+.jumbo-header-sub {
+  font-size: 80px;
+  text-align: center;
+  letter-spacing: 30px;
+}
+
+#train-icon {
+  font-size: 80px;
+}
+
+.table-style {
+  background-color: #ffffff;
+  font-size: 30px;
+  padding: 20px;
+  border: 2px solid black;
+}
+
+/* Trains */
+.red-line {
+  color: red;
+}
+.purple-line {
+  color: purple;
+}
+.orange-line {
+  color: orangered;
+}
+.green-line {
+  color: green;
+}
+.blue-line {
+  color: blue;
+}
+
+.form-style {
+  background-color: #ffffff;
+  font-size: 30px;
+  padding: 20px;
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.data-header {
+  background-color: #ffffff;
+  border: 2px solid black;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+#submit {
+  font-size: 30px;
+  background-color: black;
+  border: 1px solid gold;
+  -webkit-box-shadow: 10px -2px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px -2px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px -2px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#submit:hover {
+  color: black;
+  background-color: gold;
+
+  font-size: 30px;
+}
