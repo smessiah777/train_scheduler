@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    
-        <script src=“https://www.gstatic.com/firebasejs/5.8.6/firebase.js“> </script> 
-    
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
     <link
-        href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css">
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-    <link rel="shortcut icon" href="./assets/images/Train_Austria.svg.png" type="image/png">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Teko"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link
+      rel="shortcut icon"
+      href="./assets/images/Train_Austria.svg.png"
+      type="image/png"
+    />
     <title>GTA - Train Scheduler</title>
   </head>
   <body>
     <div class="jumbotron jumbo-style">
       <span><i id="train-icon" class="fas fa-train"></i></span>
       <h1 class="jumbo-header">G.T.A</h1>
-    
+
       <hr class="my-4 " />
       <p class="jumbo-header-sub">
-     Gotham Transit Authority
-    </p>
-    
-  </div>
+        Gotham Transit Authority
+      </p>
+    </div>
     <div class="container">
-    
-    <table class="table table-style">
+      <table class="table table-style">
         <h1 class="data-header">Current Train Schedule</h1>
         <thead>
           <tr>
@@ -43,50 +58,43 @@
             <th scope="col">Frequency (min)</th>
             <th scope="col">Next Arrival</th>
             <th scope="col">Minutes Away</th>
-            
           </tr>
         </thead>
         <tbody>
           <tr>
-            
             <td class="red-line">Red Line</td>
             <td>China Town</td>
-            <td>@mdo</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td id="rFreq"></td>
+            <td id="rDiff"></td>
+            <td id="rNext"></td>
           </tr>
           <tr>
-            
             <td class="purple-line">Purple Line</td>
             <td>Old Gotham</td>
-            <td>@fat</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td id="pFreq"></td>
+            <td id="pDiff"></td>
+            <td id="pNext"></td>
           </tr>
           <tr>
-            
             <td class="orange-line">Orange Line</td>
             <td>East Side</td>
-            <td>@twitter</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            
+            <td id="oFreq"></td>
+            <td id="oDiff"></td>
+            <td id="oNext"></td>
           </tr>
           <tr>
-            
             <td class="green-line">Green Line</td>
             <td>Financial District</td>
-            <td>@twitter</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td id="gFreq"></td>
+            <td id="gDiff"></td>
+            <td id="gNext"></td>
           </tr>
           <tr>
-            
             <td class="blue-line">Blue Line</td>
             <td>Bleake Island</td>
-            <td>@twitter</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td id="bFreq"></td>
+            <td id="bDiff"></td>
+            <td id="bNext"></td>
           </tr>
         </tbody>
       </table>
@@ -99,10 +107,8 @@
             type="input"
             class="form-control"
             id="train-name"
-            
             placeholder="Train Name"
           />
-         
         </div>
         <div class="form-group">
           <label for="DestinationInput">Destination</label>
@@ -110,21 +116,19 @@
             type="input"
             class="form-control"
             id="destination"
-            
             placeholder="Destination"
           />
-         
         </div>
         <div class="form-group">
-          <label for="firstTrainInput">First Train Time (HH:mm - military time)</label>
+          <label for="firstTrainInput"
+            >First Train Time (HH:mm - military time)</label
+          >
           <input
             type="input"
             class="form-control"
             id="first-train"
-            
             placeholder="First Train Time"
           />
-         
         </div>
         <div class="form-group">
           <label for="frequencyInput">Frequency (min)</label>
@@ -132,19 +136,21 @@
             type="input"
             class="form-control"
             id="frequency"
-            
             placeholder="Frequency(min)"
           />
-         
         </div>
-       
-        
-        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+
+        <button id="submit" type="submit" class="btn btn-primary">
+          Submit
+        </button>
       </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="./app.js"></script>
-    </body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/javascript/app.js"></script>
+    <script src="./assets/javascript/moment.js"></script>
+  </body>
 </html>
