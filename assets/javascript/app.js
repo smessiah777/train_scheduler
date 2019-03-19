@@ -102,6 +102,24 @@ $(document).ready(function() {
       .trim();
     console.log(frequencyInput);
 
+    //append to table
+    var tr = $("<tr>");
+    var tdTrain = $("<td>");
+    var tdDestination = $("<td>");
+    var tdFirst = $("<td>");
+    var tdFrequency = $("<td>");
+
+    tdTrain.text(tNameInput);
+    tdDestination.text(destinationInput);
+    tdFirst.text(firstTrainInput);
+    tdFrequency.text(frequencyInput);
+
+    $("tbody").append(tr);
+    $(tr).append(tdTrain);
+    $(tr).append(tdDestination);
+    $(tr).append(tdFirst);
+    $(tr).append(tdFrequency);
+
     database.ref().push({
       Train_Name: tNameInput,
       Destination: destinationInput,
